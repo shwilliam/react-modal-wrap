@@ -41,13 +41,7 @@ const Modal: React.FC<IProps> = ({children, ...props}) => {
     }
   }, [])
 
-  return (<div style={{
-    position: 'absolute',
-    top: 0,
-    right: 0,
-    bottom: 0,
-    left: 0,
-  }}>
+  return (<>
     <span
       tabIndex={0}
       onFocus={focusLastInteractive}
@@ -63,7 +57,7 @@ const Modal: React.FC<IProps> = ({children, ...props}) => {
       onFocus={focusFirstInteractive}
       aria-hidden
     />
-  </div>)
+  </>)
 }
 
 export default Modal

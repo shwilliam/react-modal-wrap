@@ -1,0 +1,41 @@
+{
+  "name": "react-modal-wrap",
+  "version": "0.1.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "files": [
+    "dist/*"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shwilliam/react-modal-wrap.git"
+  },
+  "keywords": [
+    "react",
+    "component",
+    "modal"
+  ],
+  "author": "William L <w-lindvall@outlook.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shwilliam/react-modal-wrap/issues"
+  },
+  "homepage": "https://github.com/shwilliam/react-modal-wrap#readme",
+  "dependencies": {},
+  "peerDependencies": {
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.2",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.1.0",
+    "eslint-plugin-react": "^7.14.3",
+    "react": "^16.9.0",
+    "typescript": "^3.6.3"
+  }
+}

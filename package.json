@@ -1,7 +1,7 @@
 {
   "name": "react-modal-wrap",
-  "version": "0.1.0",
-  "description": "",
+  "version": "0.1.1",
+  "description": "Accessbile, style-agnostic modal components",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
@@ -17,7 +17,9 @@
   "keywords": [
     "react",
     "component",
-    "modal"
+    "modal",
+    "w3c",
+    "wai-aria"
   ],
   "author": "William L <w-lindvall@outlook.com>",
   "license": "MIT",

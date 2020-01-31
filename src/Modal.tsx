@@ -48,13 +48,21 @@ const Modal: React.FC<IProps> = ({children, ...props}) => {
     bottom: 0,
     left: 0,
   }}>
-    <span tabIndex={0} onFocus={focusLastInteractive} />
+    <span
+      tabIndex={0}
+      onFocus={focusLastInteractive}
+      aria-hidden
+    />
 
     <div {...props} ref={modalRef}>
       {children}
     </div>
 
-    <span tabIndex={0} onFocus={focusFirstInteractive} />
+    <span
+      tabIndex={0}
+      onFocus={focusFirstInteractive}
+      aria-hidden
+    />
   </div>)
 }
 

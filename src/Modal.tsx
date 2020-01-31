@@ -41,7 +41,13 @@ const Modal: React.FC<IProps> = ({children, ...props}) => {
     }
   }, [])
 
-  return (<>
+  return (<div style={{
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+  }}>
     <span tabIndex={0} onFocus={focusLastInteractive} />
 
     <div {...props} ref={modalRef}>
@@ -49,7 +55,7 @@ const Modal: React.FC<IProps> = ({children, ...props}) => {
     </div>
 
     <span tabIndex={0} onFocus={focusFirstInteractive} />
-  </>)
+  </div>)
 }
 
 export default Modal

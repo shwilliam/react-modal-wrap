@@ -7,6 +7,7 @@ Following WAI-ARIA Authoring Practices's [modal dialog pattern](https://www.w3.o
 - Disable interaction outside modal
 - Contain tab sequence
 - Attempt to interact outside modal triggers close
+- Disable scroll on body(/other el)
 
 Common but not baked in:
 

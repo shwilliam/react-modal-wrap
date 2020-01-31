@@ -14,8 +14,12 @@ const Modal: React.FC<IProps> = ({children, ...props}) => {
     focusFirstDescendant(modalRef.current), [modalRef])
   const focusLastInteractive = useCallback((): boolean =>
     focusLastDescendant(modalRef.current), [modalRef])
-  const closeOnEscape = useCallback((event) => {
+  const closeOnEscape = useCallback(event => {
     if (event.keyCode === 27) close()
+  }, [])
+  const closeOnOutsideClick = useCallback((event: any): void => {
+    if (modalRef.current && !modalRef.current.contains(event.target))
+      close()
   }, [])
 
   // focus first interactive el on mount
@@ -27,6 +31,13 @@ const Modal: React.FC<IProps> = ({children, ...props}) => {
     document.addEventListener('keydown', closeOnEscape, false)
     return () => {
       document.removeEventListener('keydown', closeOnEscape, false)
+    }
+  }, [])
+
+  useEffect(() => {
+    document.addEventListener('mousedown', closeOnOutsideClick, false)
+    return () => {
+      document.removeEventListener('mousedown', closeOnOutsideClick, false)
     }
   }, [])
 

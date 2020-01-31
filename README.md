@@ -15,7 +15,24 @@ $ npm i react-modal-wrap
 
 ## Usage
 
-TODO
+```js
+import React from 'react'
+import {Modal, ModalWrapper, ModalTrigger} from 'react-modal-wrap'
+
+const App = () => (
+  <ModalWrapper>
+    <ModalTrigger value="open">open</ModalTrigger>
+
+    <Modal>
+      <p>Hello from modal</p>
+
+      <ModalTrigger value="close">close</ModalTrigger>
+    </Modal>
+  </ModalWrapper>
+)
+
+export default App
+```
 
 ### `<Modal />`
 

@@ -1,6 +1,6 @@
 import ModalContainer from './ModalContainer'
 import ModalTrigger from './ModalTrigger'
-import {ModalContextProvider} from './ModalContext'
+import ModalWrapper from './ModalContextProvider'
 
 export default ModalContainer
-export {ModalTrigger, ModalContextProvider}
+export {ModalTrigger, ModalWrapper}

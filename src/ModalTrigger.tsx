@@ -1,5 +1,5 @@
 import React, {useContext} from 'react'
-import ModalContext from './ModalContext'
+import ModalContext from './context'
 
 export interface IProps {
   value: 'open' | 'close' | 'toggle';

@@ -1,19 +1,9 @@
-import React, {useState, createContext} from 'react'
+import React, {useState} from 'react'
+import ModalContext from './context'
 
 interface IProps {
   children: JSX.Element[] | JSX.Element;
 }
-
-interface IModalContextInterface {
-  isOpen: boolean;
-  open?: any;
-  close?: any;
-  toggle?: any;
-}
-
-export const ModalContext = createContext<IModalContextInterface>({
-  isOpen: false,
-})
 
 const ModalContextProvider: React.FC<IProps> = ({
   children,
@@ -55,5 +45,4 @@ const ModalContextProvider: React.FC<IProps> = ({
   )
 }
 
-export {ModalContextProvider}
-export default ModalContext
+export default ModalContextProvider

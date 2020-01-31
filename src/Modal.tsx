@@ -1,6 +1,6 @@
 import React, {useRef, useEffect, useContext, useCallback} from 'react'
 import {focusFirstDescendant, focusLastDescendant} from './utils'
-import ModalContext from './ModalContext'
+import ModalContext from './context'
 
 export interface IProps {
   closeOnClickAway: boolean;

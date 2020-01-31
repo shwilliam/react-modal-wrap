@@ -1,6 +1,6 @@
 import React, {useContext} from 'react'
+import ModalContext from './context'
 import Modal from './Modal'
-import ModalContext from './ModalContext'
 
 export interface IProps {
   overlay: boolean;

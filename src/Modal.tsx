@@ -3,10 +3,17 @@ import {focusFirstDescendant, focusLastDescendant} from './utils'
 import ModalContext from './ModalContext'
 
 export interface IProps {
+  closeOnClickAway: boolean;
+  closeOnEsc: boolean;
   children: JSX.Element[] | JSX.Element;
 }
 
-const Modal: React.FC<IProps> = ({children, ...props}) => {
+const Modal: React.FC<IProps> = ({
+  closeOnClickAway,
+  closeOnEsc,
+  children,
+  ...props
+}) => {
   const {close} = useContext(ModalContext)
   const modalRef = useRef<HTMLDivElement>(null)
 
@@ -28,6 +35,8 @@ const Modal: React.FC<IProps> = ({children, ...props}) => {
   }, [modalRef])
 
   useEffect(() => {
+    if (!closeOnEsc) return
+
     document.addEventListener('keydown', closeOnEscape, false)
     return () => {
       document.removeEventListener('keydown', closeOnEscape, false)
@@ -35,6 +44,8 @@ const Modal: React.FC<IProps> = ({children, ...props}) => {
   }, [])
 
   useEffect(() => {
+    if (!closeOnClickAway) return
+
     document.addEventListener('mousedown', closeOnOutsideClick, false)
     return () => {
       document.removeEventListener('mousedown', closeOnOutsideClick, false)

@@ -4,11 +4,15 @@ import ModalContext from './ModalContext'
 
 export interface IProps {
   overlay: boolean;
+  closeOnClickAway: boolean;
+  closeOnEsc: boolean;
   children: JSX.Element[] | JSX.Element;
 }
 
 const ModalContainer: React.FC<IProps> = ({
   overlay = false,
+  closeOnClickAway = true,
+  closeOnEsc = true,
   children,
   ...props
 }) => {
@@ -25,9 +29,19 @@ const ModalContainer: React.FC<IProps> = ({
       }}
       {...props}
     >
-      <Modal>{children}</Modal>
+      <Modal
+        closeOnClickAway={closeOnClickAway}
+        closeOnEsc={closeOnEsc}
+      >{children}</Modal>
     </div>
-  ) : (<Modal {...props}>{children}</Modal>)
+  ) : (
+    <Modal
+      closeOnClickAway={closeOnClickAway}
+      closeOnEsc={closeOnEsc}
+    >
+      {children}
+    </Modal>
+  )
 
   return null
 }

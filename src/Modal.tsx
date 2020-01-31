@@ -1,6 +1,5 @@
-import React, {useRef, useEffect, useContext, useCallback} from 'react'
-import {focusFirstDescendant, focusLastDescendant} from './utils'
-import ModalContext from './context'
+import React, {useRef, useEffect} from 'react'
+import {useFocusTrap, useCloseOnClickAway, useCloseOnEsc} from './hooks'
 
 export interface IProps {
   closeOnClickAway: boolean;
@@ -14,43 +13,19 @@ const Modal: React.FC<IProps> = ({
   children,
   ...props
 }) => {
-  const {close} = useContext(ModalContext)
   const modalRef = useRef<HTMLDivElement>(null)
 
-  const focusFirstInteractive = useCallback((): boolean =>
-    focusFirstDescendant(modalRef.current), [modalRef])
-  const focusLastInteractive = useCallback((): boolean =>
-    focusLastDescendant(modalRef.current), [modalRef])
-  const closeOnEscape = useCallback(event => {
-    if (event.keyCode === 27) close()
-  }, [])
-  const closeOnOutsideClick = useCallback((event: any): void => {
-    if (modalRef.current && !modalRef.current.contains(event.target))
-      close()
-  }, [])
+  useCloseOnClickAway(modalRef, !closeOnClickAway)
+  useCloseOnEsc(!closeOnEsc)
+  const {
+    focusFirstInteractive,
+    focusLastInteractive,
+  } = useFocusTrap(modalRef)
 
   // focus first interactive el on mount
   useEffect(() => {
     if (modalRef.current) focusFirstInteractive()
   }, [modalRef])
-
-  useEffect(() => {
-    if (!closeOnEsc) return
-
-    document.addEventListener('keydown', closeOnEscape, false)
-    return () => {
-      document.removeEventListener('keydown', closeOnEscape, false)
-    }
-  }, [])
-
-  useEffect(() => {
-    if (!closeOnClickAway) return
-
-    document.addEventListener('mousedown', closeOnOutsideClick, false)
-    return () => {
-      document.removeEventListener('mousedown', closeOnOutsideClick, false)
-    }
-  }, [])
 
   return (<>
     <span

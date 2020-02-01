@@ -34,6 +34,8 @@ const App = () => (
 export default App
 ```
 
+## Components
+
 ### `<Modal />`
 
 A context wrapper that handles checkbox state changes. Must wrap `<TriStateCheckbox />` and `<Checkbox />`.
@@ -46,13 +48,17 @@ A context wrapper that handles checkbox state changes. Must wrap `<TriStateCheck
 | `closeOnClickAway` | boolean |    ❌    | `true`  | Whether the modal should close when click detected outside of container.  |
 | `closeOnEsc`       | boolean |    ❌    | `true`  | Whether the modal should close on escape keypress.                        |
 
-### `<ModalTrigger />`
+## Hooks
 
-#### Props
+### `useModal`
 
-| Name    | Type                                | Required | Default  | Description                                 |
-| ------- | ----------------------------------- | :------: | -------- | ------------------------------------------- |
-| `value` | `'open'` \| `'close'` \| `'toggle'` |    ❌    | `'open'` | The action to happen to the modal on click. |
+Returns an object with the following functions to control the modal:
+
+| Name     | Type     | Return type | Description                                                                    |
+| -------- | -------- | :---------: | ------------------------------------------------------------------------------ |
+| `open`   | function |    void     | Opens the modal.                                                               |
+| `close`  | function |    void     | Closes the modal.                                                              |
+| `toggle` | function |   boolean   | Toggles the modal and returns a boolean representing if the the modal is open. |
 
 ## Contributing
 

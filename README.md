@@ -17,16 +17,26 @@ $ npm i react-modal-wrap
 
 ```js
 import React from 'react'
-import {Modal, ModalWrapper, ModalTrigger} from 'react-modal-wrap'
+import {Modal, ModalWrapper, useModal} from 'react-modal-wrap'
+
+const ModalCloseButton = ({children}) => {
+  const {close} = useModal()
+  return <button onClick={close}>{children}</button>
+}
+
+const ModalOpenButton = ({children}) => {
+  const {open} = useModal()
+  return <button onClick={open}>{children}</button>
+}
 
 const App = () => (
   <ModalWrapper>
-    <ModalTrigger value="open">open</ModalTrigger>
+    <ModalOpenButton>open</ModalOpenButton>
 
     <Modal>
       <p>Hello from modal</p>
 
-      <ModalTrigger value="close">close</ModalTrigger>
+      <ModalCloseButton>close</ModalCloseButton>
     </Modal>
   </ModalWrapper>
 )

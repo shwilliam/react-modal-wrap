@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useContext, Children, cloneElement, ReactElement} from 'react'
 import ModalContext from './context'
 
 export interface IProps {
@@ -12,12 +12,14 @@ const ModalTrigger: React.FC<IProps> = ({
 }) => {
   const modal = useContext(ModalContext)
 
-  return (<button
-    onClick={modal[value]}
-    className="modal-trigger"
-  >
-    {children}
-  </button>)
+  return (<>
+    {Children.map(
+      children,
+      (child: ReactElement) => cloneElement(child, {
+        onClick: modal[value]
+      })
+    )}
+  </>)
 }
 
 export default ModalTrigger

@@ -20,7 +20,7 @@ const ModalContextProvider: React.FC<IProps> = ({
     lastFocusedOutside.focus()
     setLastFocusedOutside(null)
   }
-  const toggle = (e: any): void => {
+  const toggle = (e: any): boolean => {
     setIsOpen((s: boolean):boolean => {
       if (s) {
         setLastFocusedOutside(e.target)
@@ -29,6 +29,8 @@ const ModalContextProvider: React.FC<IProps> = ({
       setLastFocusedOutside(null)
       return !s
     })
+
+    return isOpen
   }
 
   return (

@@ -22,7 +22,7 @@ const ModalContainer: React.FC<IProps> = ({
     <div
       style={{
         position: 'absolute',
-        top: 0,
+        top: window.scrollY,
         right: 0,
         bottom: 0,
         left: 0,

@@ -1,19 +1,22 @@
-import React, {useRef, useEffect} from 'react'
-import {useFocusTrap, useCloseOnClickAway, useCloseOnEsc} from './hooks'
+import React, {useRef, useEffect, useCallback} from 'react'
+import {useFocusTrap, useCloseOnClickAway, useCloseOnEsc, useModal} from './hooks'
 
 export interface IProps {
   closeOnClickAway: boolean;
   closeOnEsc: boolean;
+  lockScroll: boolean;
   children: JSX.Element[] | JSX.Element;
 }
 
 const Modal: React.FC<IProps> = ({
   closeOnClickAway,
   closeOnEsc,
+  lockScroll,
   children,
   ...props
 }) => {
   const modalRef = useRef<HTMLDivElement>(null)
+  const {scrollY} = useModal()
 
   useCloseOnClickAway(modalRef, !closeOnClickAway)
   useCloseOnEsc(!closeOnEsc)
@@ -26,6 +29,16 @@ const Modal: React.FC<IProps> = ({
   useEffect(() => {
     if (modalRef.current) focusFirstInteractive()
   }, [modalRef])
+
+  const disableScroll = useCallback(() => {
+    if (lockScroll) window.scrollTo(0, scrollY) // TODO: handle x pos
+  }, [scrollY])
+
+  useEffect(() => {
+    window.addEventListener('scroll', disableScroll)
+    return () => window.removeEventListener('scroll', disableScroll)
+  }, [])
+
 
   return (<>
     <span

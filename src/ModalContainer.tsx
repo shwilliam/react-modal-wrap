@@ -6,6 +6,7 @@ export interface IProps {
   overlay: boolean;
   closeOnClickAway: boolean;
   closeOnEsc: boolean;
+  lockScroll: boolean;
   children: JSX.Element[] | JSX.Element;
 }
 
@@ -13,6 +14,7 @@ const ModalContainer: React.FC<IProps> = ({
   overlay = false,
   closeOnClickAway = true,
   closeOnEsc = true,
+  lockScroll = true,
   children,
   ...props
 }) => {
@@ -32,12 +34,16 @@ const ModalContainer: React.FC<IProps> = ({
       <Modal
         closeOnClickAway={closeOnClickAway}
         closeOnEsc={closeOnEsc}
-      >{children}</Modal>
+        lockScroll={lockScroll}
+      >
+        {children}
+      </Modal>
     </div>
   ) : (
     <Modal
       closeOnClickAway={closeOnClickAway}
       closeOnEsc={closeOnEsc}
+      lockScroll={lockScroll}
     >
       {children}
     </Modal>

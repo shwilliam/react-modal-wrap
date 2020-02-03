@@ -1,4 +1,4 @@
-import React, {useState, useCallback, useEffect} from 'react'
+import React, {useState} from 'react'
 import ModalContext from './context'
 
 interface IProps {
@@ -9,26 +9,13 @@ const ModalContextProvider: React.FC<IProps> = ({
   children,
 }) => {
   const [isOpen, setIsOpen] = useState(false)
-  const [scrollTop, setScrollTop] = useState()
+  const [scrollY, setScrollY] = useState()
   const [lastFocusedOutside, setLastFocusedOutside] = useState()
-
-  const disableScroll = useCallback(() => {
-    window.scrollTo(0, scrollTop) // TODO: handle x pos
-  }, [scrollTop])
-
-  useEffect(() => {
-    if (isOpen) {
-      window.addEventListener('scroll', disableScroll)
-    } else {
-      window.removeEventListener('scroll', disableScroll)
-    }
-
-  }, [isOpen])
 
   const open = (e: any): void => {
     setIsOpen(true)
     setLastFocusedOutside(e.target)
-    setScrollTop(window.scrollY)
+    setScrollY(window.scrollY)
   }
   const close = (): void => {
     setIsOpen(false)
@@ -55,6 +42,7 @@ const ModalContextProvider: React.FC<IProps> = ({
         open,
         close,
         toggle,
+        scrollY,
       }}
     >
       {children}

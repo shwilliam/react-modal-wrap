@@ -57,6 +57,7 @@ A context wrapper that handles checkbox state changes. Must wrap `<TriStateCheck
 | `overlay`          | boolean |    ❌    | `false` | Whether to render a wrapper around the modal styled to fill the document. |
 | `closeOnClickAway` | boolean |    ❌    | `true`  | Whether the modal should close when click detected outside of container.  |
 | `closeOnEsc`       | boolean |    ❌    | `true`  | Whether the modal should close on escape keypress.                        |
+| `lockScroll`       | boolean |    ❌    | `true`  | Whether to disable scroll when modal is open.                             |
 
 ## Hooks
 
